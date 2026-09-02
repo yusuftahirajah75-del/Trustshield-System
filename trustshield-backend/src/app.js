@@ -21,6 +21,7 @@ const errorHandler =
 const app = express();
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1);
 
 app.use(helmet());
 
@@ -28,7 +29,10 @@ app.use(corsMiddleware);
 
 app.use(
   express.json({
-    limit: "10kb"
+    limit: "1mb",
+    verify: (req, res, buf) => {
+      req.rawBody = buf;
+    }
   })
 );
 

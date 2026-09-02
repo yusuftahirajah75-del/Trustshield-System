@@ -39,7 +39,13 @@ const env = {
   cookieSecure:
     String(process.env.COOKIE_SECURE).toLowerCase() === "true",
 
-  cookieSameSite: process.env.COOKIE_SAME_SITE || "lax"
+  cookieSameSite: process.env.COOKIE_SAME_SITE || "lax",
+
+  paystackSecretKey: process.env.PAYSTACK_SECRET_KEY || "sk_test_trustshield_dummy_secret_key",
+  paystackPublicKey: process.env.PAYSTACK_PUBLIC_KEY || "pk_test_trustshield_dummy_public_key",
+  paymentWebhookSecret: process.env.PAYMENT_WEBHOOK_SECRET || process.env.PAYSTACK_SECRET_KEY || "sk_test_trustshield_dummy_secret_key",
+  billingCurrency: process.env.BILLING_CURRENCY || "USD",
+  paystackBaseUrl: process.env.PAYSTACK_BASE_URL || "https://api.paystack.co"
 };
 
 module.exports = env;

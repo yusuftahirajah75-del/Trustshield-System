@@ -1,6 +1,6 @@
 import api from "../api/axios";
 
-const AUTH_BASE = "/auth";
+const AUTH_BASE = "/api/v1/auth";
 
 const register = async (payload) => {
   const response = await api.post(

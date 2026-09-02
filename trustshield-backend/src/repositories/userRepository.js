@@ -5,7 +5,7 @@ const createUser = async ({
   lastName,
   email,
   passwordHash,
-  role
+  role = "user"
 }) => {
   const sql = `
     INSERT INTO users (

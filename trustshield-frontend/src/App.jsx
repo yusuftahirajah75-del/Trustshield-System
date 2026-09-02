@@ -12,6 +12,7 @@ import Results from "./pages/Results";
 import Dashboard from "./pages/Dashboard";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
+import Billing from "./pages/Billing";
 
 
 const App = () => {
@@ -29,6 +30,8 @@ const App = () => {
         <Route path="/results/:id" element={<Results />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/billing" element={<Billing />} />
 
         <Route path="/history" element={<History />} />
 

@@ -1,16 +1,22 @@
 const { Pool } = require("pg");
 const env = require("./env");
 
+const useSsl =
+  process.env.DB_SSL === "true" ||
+  (env.nodeEnv === "production" && Boolean(env.databaseUrl));
+
 const poolConfig = env.databaseUrl
   ? {
-      connectionString: env.databaseUrl
+      connectionString: env.databaseUrl,
+      ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {})
     }
   : {
       host: env.dbHost,
       port: env.dbPort,
       database: env.dbName,
       user: env.dbUser,
-      password: env.dbPassword
+      password: env.dbPassword,
+      ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {})
     };
 
 const pool = new Pool({

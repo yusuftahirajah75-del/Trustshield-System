@@ -1,6 +1,6 @@
 import api from "../api/axios";
 
-const ANALYSIS_BASE = "/analysis";
+const ANALYSIS_BASE = "/api/v1/analysis";
 
 const createAnalysis = async (url) => {
   const response = await api.post(

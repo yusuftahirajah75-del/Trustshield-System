@@ -4,9 +4,10 @@
   "description": "TrustShield security-focused URL risk analysis backend",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-       "dev": "nodemon src/server.js",
-  "start": "node server.js"
+    "test": "node --test test/*.test.js",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "migrate": "node src/database/migrate.js"
   },
   "keywords": [],
   "author": "",

@@ -32,6 +32,15 @@ const Home = () => {
             <Button
               variant="secondary"
               onClick={() => {
+                window.location.href = "/dashboard";
+              }}
+            >
+              Developer Platform
+            </Button>
+
+            <Button
+              variant="ghost"
+              onClick={() => {
                 window.location.href = "/login";
               }}
             >

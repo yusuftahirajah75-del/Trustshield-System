@@ -42,8 +42,27 @@ const analysisRateLimiter = rateLimit({
   }
 });
 
+const developerApiRateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: (req) => req.apiKey?.rate_limit_per_minute || 60,
+  keyGenerator: (req) =>
+    req.apiKey ? `apikey:${req.apiKey.id}` : req.ip || "unknown",
+  validate: { keyGeneratorIpFallback: false },
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  statusCode: 429,
+  message: {
+    success: false,
+    message: "API rate limit exceeded. Please wait before retrying.",
+    error: {
+      code: "RATE_LIMIT_EXCEEDED"
+    }
+  }
+});
+
 module.exports = {
   globalRateLimiter,
   authRateLimiter,
-  analysisRateLimiter
+  analysisRateLimiter,
+  developerApiRateLimiter
 };
